@@ -1,0 +1,203 @@
+{
+    "Version": "init version",
+    "Config": {
+        "cluster_example": {
+            "BackendConf": {
+                "TimeoutConnSrv": 2000,
+                "TimeoutResponseHeader": 50000,
+                "MaxIdleConnsPerHost": 0,
+                "RetryLevel": 0
+            },
+            "CheckConf": {
+                "Schem": "http",
+                "Uri": "/healthcheck",
+                "Host": "example.org",
+                "StatusCode": 200,
+                "FailNum": 10,
+                "CheckInterval": 1000
+            },
+            "GslbBasic": {
+                "CrossRetry": 0,
+                "RetryMax": 2,
+                "HashConf": {
+                    "HashStrategy": 0,
+                    "HashHeader": "Cookie:UID",
+                    "SessionSticky": false
+                }
+            },
+            "ClusterBasic": {
+                "TimeoutReadClient": 30000,
+                "TimeoutWriteClient": 60000,
+                "TimeoutReadClientAgain": 30000,
+                "ReqWriteBufferSize": 512,
+                "ReqFlushInterval": 0,
+                "ResFlushInterval": -1,
+                "CancelOnClientClose": false
+            }
+        },
+        "https_cluster_example": {
+            "BackendConf": {
+                "Protocol": "https",
+                "TimeoutConnSrv": 2000,
+                "TimeoutResponseHeader": 50000,
+                "MaxIdleConnsPerHost": 0,
+                "RetryLevel": 0
+            },
+            "CheckConf": {
+                "Schem": "https",
+                "Uri": "/",
+                "Host": "example.org",
+                "StatusCode": 200,
+                "FailNum": 10,
+                "CheckInterval": 1000
+            },
+            "GslbBasic": {
+                "CrossRetry": 0,
+                "RetryMax": 2,
+                "HashConf": {
+                    "HashStrategy": 0,
+                    "HashHeader": "Cookie:UID",
+                    "SessionSticky": false
+                }
+            },
+            "ClusterBasic": {
+                "TimeoutReadClient": 30000,
+                "TimeoutWriteClient": 60000,
+                "TimeoutReadClientAgain": 30000,
+                "ReqWriteBufferSize": 512,
+                "ReqFlushInterval": 0,
+                "ResFlushInterval": -1,
+                "CancelOnClientClose": false
+            },
+            "HTTPSConf":{
+                "RSHost": "www.example.org",
+                "BFEKeyFile": "../conf/tls_conf/backend_rs/r_bfe_dev_prv.pem",
+                "BFECertFile": "../conf/tls_conf/backend_rs/r_bfe_dev.crt",
+                "RSCAList": [
+                    "../conf/tls_conf/backend_rs/bfe_r_ca.crt",
+                    "../conf/tls_conf/backend_rs/bfe_i_ca.crt"
+                ],
+                "RSInsecureSkipVerify": false
+            }
+        },
+        "h2c_cluster_example": {
+            "BackendConf": {
+                "Protocol": "h2c",
+                "TimeoutConnSrv": 2000,
+                "TimeoutResponseHeader": 50000,
+                "MaxIdleConnsPerHost": 0,
+                "RetryLevel": 0
+            },
+            "CheckConf": {
+                "Schem": "http",
+                "Uri": "/healthcheck",
+                "Host": "example.org",
+                "StatusCode": 200,
+                "FailNum": 10,
+                "CheckInterval": 1000
+            },
+            "GslbBasic": {
+                "CrossRetry": 0,
+                "RetryMax": 2,
+                "HashConf": {
+                    "HashStrategy": 0,
+                    "HashHeader": "Cookie:UID",
+                    "SessionSticky": false
+                }
+            },
+            "ClusterBasic": {
+                "TimeoutReadClient": 30000,
+                "TimeoutWriteClient": 60000,
+                "TimeoutReadClientAgain": 30000,
+                "ReqWriteBufferSize": 512,
+                "ReqFlushInterval": 0,
+                "ResFlushInterval": -1,
+                "CancelOnClientClose": false
+            }
+        },
+        "fcgi_cluster_example": {
+            "BackendConf": {
+                "Protocol": "fcgi",
+                "TimeoutConnSrv": 2000,
+                "TimeoutResponseHeader": 50000,
+                "MaxIdleConnsPerHost": 0,
+                "RetryLevel": 0,
+                "FCGIConf": {
+                    "EnvVars": {
+                        "A": "a"    
+                    },
+                    "Root": "/home/work"
+                }
+            },
+            "CheckConf": {
+                "Schem": "http",
+                "Uri": "/healthcheck",
+                "Host": "example.org",
+                "StatusCode": 200,
+                "FailNum": 10,
+                "CheckInterval": 1000
+            },
+            "GslbBasic": {
+                "CrossRetry": 0,
+                "RetryMax": 2,
+                "HashConf": {
+                    "HashStrategy": 0,
+                    "HashHeader": "Cookie:UID",
+                    "SessionSticky": false
+                }
+            },
+            "ClusterBasic": {
+                "TimeoutReadClient": 30000,
+                "TimeoutWriteClient": 60000,
+                "TimeoutReadClientAgain": 30000,
+                "ReqWriteBufferSize": 512,
+                "ReqFlushInterval": 0,
+                "ResFlushInterval": -1,
+                "CancelOnClientClose": false
+            }
+        },
+        "ai_cluster_example": {
+            "BackendConf": {
+                "TimeoutConnSrv": 50000,
+                "TimeoutResponseHeader": 50000,
+                "MaxIdleConnsPerHost": 0,
+                "RetryLevel": 0
+            },
+            "CheckConf": {
+                "Schem": "http",
+                "Uri": "/healthcheck",
+                "Host": "www.test1.com",
+                "StatusCode": 0,
+                "FailNum": 1000,
+                "SuccNum": 1,
+                "CheckTimeout": null,
+                "CheckInterval": 100000
+            },
+            "GslbBasic": {
+                "CrossRetry": 0,
+                "RetryMax": 2,
+                "HashConf": {
+                    "HashStrategy": 0,
+                    "HashHeader": "Cookie:UID",
+                    "SessionSticky": false
+                }
+            },
+            "ClusterBasic": {
+                "TimeoutReadClient": 30000,
+                "TimeoutWriteClient": 30000,
+                "TimeoutReadClientAgain": 30000,
+                "ReqWriteBufferSize": 0,
+                "ReqFlushInterval": 0,
+                "ResFlushInterval": -1,
+                "CancelOnClientClose": true
+            },
+            "AIConf": {
+                "Type": 1,
+                "ModelMapping": {
+                    "test-model":"gpt-5"
+                },
+                "Key": "YOURAPIKEY"
+            }
+        }        
+    }
+}
